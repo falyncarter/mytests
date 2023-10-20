@@ -9,25 +9,31 @@
 <body>
     <div class="container">
         <h1>Cat Care</h1>
-        <form id="catCareForm">
-            <label for="foodBowlLvlInput">Food Bowl Level:</label>
-            <input type="text" id="foodBowlLvlInput"><br>
-            <label for="waterBowlLvlInput">Water Bowl Level:</label>
-            <input type="text" id="waterBowlLvlInput"><br>
-            <label for="catBehavior">Cat Behavior:</label>
-            <input type="text" id="catBehavior"><br>
-            <button id="submitBtn">Submit</button>
-        </form>
+
+        <label for="foodBowlLvl">Food Bowl Level:</label>
+        <input type="text" id="foodBowlLvl"><br>
+
+        <label for="waterBowlLvl">Water Bowl Level:</label>
+        <input type="text" id="waterBowlLvl"><br>
+
+        <label for="catBehavior">Cat Behavior:</label>
+        <input type="text" id="catBehavior"><br>
+
+        <button id="submitBtn">Submit</button>
+
         <div class="result" id="foodResult">
             <span class="prompt-text">Food Bowl:</span> <span class="results-text"></span>
         </div>
+
         <div class="result" id="waterResult">
             <span class="prompt-text">Water Bowl:</span> <span class="results-text"></span>
         </div>
+
         <div class="result" id="treatsResult">
             <span class="prompt-text">Treats:</span> <span class="results-text"></span>
         </div>
     </div>
+
     <script defer src="main.js"></script>
 </body>
 </html>

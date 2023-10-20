@@ -1,75 +1,121 @@
-const foodOptions = {
+// document.addEventListener("DOMContentLoaded", function () {
+//   const foodBowlLvlInput = document.getElementById("foodBowlLvl");
+//   const waterBowlLvlInput = document.getElementById("waterBowlLvl");
+//   const catBehaviorInput = document.getElementById("catBehavior");
+//   const foodResult = document.getElementById("foodResult");
+//   const waterResult = document.getElementById("waterResult");
+//   const treatsResult = document.getElementById("treatsResult");
+//   const submitBtn = document.getElementById("submitBtn");
+
+//   submitBtn.addEventListener("click", function () {
+//     const foodBowlLvl = foodBowlLvlInput.value.trim().toLowerCase();
+//     const waterBowlLvl = waterBowlLvlInput.value.trim().toLowerCase();
+//     const catBehavior = catBehaviorInput.value.trim().toLowerCase();
+
+//     displayResults(foodBowlLvl, waterBowlLvl, catBehavior);
+//   });
+
+//   function displayResults(foodBowlLvl, waterBowlLvl, catBehavior) {
+//     const foodResult = document.getElementById("foodResult");
+//     const waterResult = document.getElementById("waterResult");
+//     const treatsResult = document.getElementById("treatsResult");
+
+    // const foodResults = {
+    //   fine: "Don't give food",
+    //   medium: "Give some food",
+    //   low: "Give a lot of food",
+    // };
+
+    // const waterResults = {
+    //   fine: "Don't give water",
+    //   medium: "Give some water",
+    //   low: "Give a lot of water",
+    // };
+
+    // const treatsResults = {
+    //   great: "Give them treats: 3",
+    //   good: "Give them treats: 2",
+    //   meh: "Give them treats: 1",
+    //   bad: "No treats today",
+    // };
+
+//     foodResult.textContent = foodResults[foodBowlLvl];
+//     waterResult.textContent = waterResults[waterBowlLvl];
+//     treatsResult.textContent = treatsResults[catBehavior];
+//   }
+// });
+
+
+const foodResults = {
     fine: "Don't give food",
     medium: "Give some food",
     low: "Give a lot of food",
   };
   
-  const waterOptions = {
+  const waterResults = {
     fine: "Don't give water",
     medium: "Give some water",
     low: "Give a lot of water",
   };
   
-  const treatOptions = {
+  const treatsResults = {
     great: "3",
     good: "2",
     meh: "1",
     bad: "No treats today",
   };
   
-  const getInputValue = (elementId) => {
-    const inputElement = document.getElementById(elementId);
-    return inputElement ? inputElement.value : null;
-  };
+  const foodBowlLvlInput = document.getElementById("foodBowlLvl");
+  const waterBowlLvlInput = document.getElementById("waterBowlLvl");
+  const catBehaviorInput = document.getElementById("catBehavior");
   
-  const displayResults = () => {
-    const foodLevel = getInputValue("foodBowlLvl");
-    const waterLevel = getInputValue("waterBowlLvl");
-    const catBehavior = getInputValue("catBehavior");
+  
+  const onSubButtClick = (event) => {
+    event.preventDefault();
+    const foodLevel = getInputValue(foodBowlLvlInput);
+    const waterLevel = getInputValue(waterBowlLvlInput);
+    const catBehavior = getInputValue(catBehaviorInput);
+  
+    // console.log("Food Level:", foodLevel); 
+    // console.log("Water Level:", waterLevel);
+    // console.log("Cat Behavior:", catBehavior);
   
     if (foodLevel !== null && waterLevel !== null && catBehavior !== null) {
-      const foodResult = foodOptions[foodLevel];
-      const waterResult = waterOptions[waterLevel];
-      const treatsResult = treatOptions[catBehavior];
-  
-      if (foodResult && waterResult && treatsResult) {
-        const foodResultElement = document.querySelector("#foodResult .results-text");
-        const waterResultElement = document.querySelector("#waterResult .results-text");
-        const treatsResultElement = document.querySelector("#treatsResult .results-text");
-  
-        foodResultElement.textContent = foodResult;
-        waterResultElement.textContent = waterResult;
-        treatsResultElement.textContent = treatsResult;
-  
-        addToResults(foodLevel, waterLevel, catBehavior, { food: foodResult, water: waterResult, treats: treatsResult });
-      } else {
-        console.log("Content could not be generated.");
-      }
+      displayContent(foodLevel, waterLevel, catBehavior);
     } else {
-      console.log("Please fill in all the required fields.");
+      //working on it
     }
   };
   
+  const getInputValue = (inputElement) => {
+    return inputElement ? inputElement.value : null;
+  };
+  
+  const displayContent = (foodLevel, waterLevel, catBehavior) => {
+    const foodResultElement = document.querySelector("#foodResult .results-text");
+    const waterResultElement = document.querySelector("#waterResult .results-text");
+    const treatsResultElement = document.querySelector("#treatsResult .results-text");
+  
+    const foodContent = foodResults[foodLevel];
+    const waterContent = waterResults[waterLevel];
+    const treatsContent = treatsResults[catBehavior];
+  
+    if (foodContent && waterContent && treatsContent) {
+      foodResultElement.textContent = foodContent;
+      waterResultElement.textContent = waterContent;
+      treatsResultElement.textContent = treatsContent;
+    } else {
+      //working on it
+    }
+  };
+  
+  
   const init = () => {
-    const submitButton = document.getElementById("submitBtn");
-    submitButton.addEventListener("click", (event) => {
-      event.preventDefault();
-      displayResults();
-    });
-  };
-  
-  const resultsArray = [];
-  
-  const addToResults = (foodLevel, waterLevel, catBehavior, content) => {
-    resultsArray.push({ foodLevel, waterLevel, catBehavior, content });
-    displayResultsInConsole();
-  };
-  
-  const displayResultsInConsole = () => {
-    resultsArray.forEach((result, index) => {
-      console.log(`Result ${index + 1}:`, result);
-    });
+    const submitBtn = document.getElementById("submitBtn");
+    submitBtn.addEventListener("click", onSubButtClick);
   };
   
   document.addEventListener("DOMContentLoaded", init);
+  
+  init();
   

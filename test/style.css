@@ -80,4 +80,9 @@ button {
     text-shadow: 1px 1px 1px black; /* Black Text Outline */
 }
 
-/*
+/* Style prompt text */
+.prompt-text {
+    font-weight: bold;
+    color: #ff69b4; /* Hot Pink Text */
+    text-shadow: 1px 1px 1px black; /* Black Text Outline */
+}
