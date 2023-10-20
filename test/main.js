@@ -33,7 +33,7 @@ const foodResults = {
         treatsResult: treatsContent,
       };
     } else {
-      return null;
+     ;
     }
   }
   
@@ -47,7 +47,7 @@ const foodResults = {
       const results = displayContent(foodLevel, waterLevel, catBehavior);
       return results;
     } else {
-      return null;
+      
     }
   }
   
