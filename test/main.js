@@ -21,12 +21,12 @@ const getInputValue = (selectElement) => {
   return selectElement ? selectElement.value : null;
 };
 
-const displayContent = (foodLevel, waterLevel, catBehavior) => {
+const displayContent = (foodLevel, waterLevel, catBehavior, catSummary) => {
   const foodContent = foodResults[foodLevel];
   const waterContent = waterResults[waterLevel];
   const treatsContent = treatsResults[catBehavior];
 
-  if (foodContent && waterContent && treatsContent) {
+  if (foodContent && waterContent && treatsContent && catSummary) {
     return {
       food: foodContent,
       water: waterContent,
@@ -40,19 +40,22 @@ const updateResults = (content) => {
   const foodResultElement = document.querySelector("#foodResult .results-text");
   const waterResultElement = document.querySelector("#waterResult .results-text");
   const treatsResultElement = document.querySelector("#treatsResult .results-text");
+  const behaviorResultElement = document.querySelector("#behaviorResult .results-text");
 
   foodResultElement.textContent = content.food;
   waterResultElement.textContent = content.water;
   treatsResultElement.textContent = content.treats;
+  behaviorResultElement.textContent = content.summary; // Display cat behavior summary
 };
 
 const resultsArray = [];
 
-const addToResultsArray = (foodLevel, waterLevel, catBehavior, content) => {
+const addToResultsArray = (foodLevel, waterLevel, catBehavior, catSummary, content) => {
   resultsArray.push({
     foodLevel,
     waterLevel,
     catBehavior,
+    catSummary,
     content,
   });
 
@@ -78,32 +81,17 @@ const onSubButtClick = (event) => {
   const catSummary = catSummaryInput.value;
 
   if (foodLevel !== null && waterLevel !== null && catBehavior !== null && catSummary !== "") {
-      const content = displayContent(foodLevel, waterLevel, catBehavior, catSummary);
-      if (content) {
-          updateResults(content);
-          addToResultsArray(foodLevel, waterLevel, catBehavior, catSummary, content);
-      } else {
-          console.log("Content could not be generated.");
-      }
+    const content = displayContent(foodLevel, waterLevel, catBehavior, catSummary);
+    if (content) {
+      updateResults(content);
+      addToResultsArray(foodLevel, waterLevel, catBehavior, catSummary, content);
+    } else {
+      console.log("Content could not be generated.");
+    }
   } else {
-      console.log("Please fill in all the required fields.");
+    console.log("Please fill in all the required fields.");
   }
 };
-
-
-
-const updateResults = (content) => {
-  const foodResultElement = document.querySelector("#foodResult .results-text");
-  const waterResultElement = document.querySelector("#waterResult .results-text");
-  const treatsResultElement = document.querySelector("#treatsResult .results-text");
-  const behaviorResultElement = document.querySelector("#behaviorResult .results-text"); // New element
-
-  foodResultElement.textContent = content.food;
-  waterResultElement.textContent = content.water;
-  treatsResultElement.textContent = content.treats;
-  behaviorResultElement.textContent = content.summary; // Display cat behavior summary
-};
-
 
 const init = () => {
   const submitBtn = document.getElementById("submitBtn");
