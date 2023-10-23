@@ -10,23 +10,38 @@
     <div class="container">
         <h1>Cat Care</h1>
 
-        <label for="foodBowlLvl">Food Bowl Level:</label>
-        <input type="text" id="foodBowlLvl"><br>
-
-        <label for="waterBowlLvl">Water Bowl Level:</label>
-        <input type="text" id="waterBowlLvl"><br>
-
-        <label for="catBehavior">Cat Behavior:</label>
-        <input type="text" id="catBehavior"><br>
-
-        <button id="submitBtn">Submit</button>
+        <form id="catCareForm">
+            <label for="foodBowlLvlInput">Food Bowl Level:</label>
+            <select id="foodBowlLvlInput">
+                <option value="fine">Fine</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+        
+            <label for="waterBowlLvlInput">Water Bowl Level:</label>
+            <select id="waterBowlLvlInput">
+                <option value="fine">Fine</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+        
+            <label for="catBehaviorInput">Cat Behavior:</label>
+            <select id="catBehaviorInput">
+                <option value="great">Great</option>
+                <option value="good">Good</option>
+                <option value="meh">Meh</option>
+                <option value="bad">Bad</option>
+            </select>
+        
+            <button id="submitBtn">Submit</button>
+        </form>
 
         <div class="result" id="foodResult">
             <span class="prompt-text">Food Bowl:</span> <span class="results-text"></span>
         </div>
 
         <div class="result" id="waterResult">
-            <span class="prompt-text">Water Bowl:</span> <span class="results-text"></span>
+            <span class= "prompt-text">Water Bowl:</span> <span class="results-text"></span>
         </div>
 
         <div class="result" id="treatsResult">
