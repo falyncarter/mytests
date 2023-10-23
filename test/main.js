@@ -31,6 +31,7 @@ const displayContent = (foodLevel, waterLevel, catBehavior) => {
       food: foodContent,
       water: waterContent,
       treats: treatsContent,
+      summary: catSummary,
     };
   }
 };
@@ -69,16 +70,18 @@ const onSubButtClick = (event) => {
   const foodBowlLvlInput = document.getElementById("foodBowlLvlInput");
   const waterBowlLvlInput = document.getElementById("waterBowlLvlInput");
   const catBehaviorInput = document.getElementById("catBehaviorInput");
+  const catSummaryInput = document.getElementById("catSummaryInput");
 
   const foodLevel = getInputValue(foodBowlLvlInput);
   const waterLevel = getInputValue(waterBowlLvlInput);
   const catBehavior = getInputValue(catBehaviorInput);
+  const catSummary = catSummaryInput.value;
 
-  if (foodLevel !== null && waterLevel !== null && catBehavior !== null) {
-    const content = displayContent(foodLevel, waterLevel, catBehavior);
+  if (foodLevel !== null && waterLevel !== null && catBehavior !== null && catSummary !== "") {
+    const content = displayContent(foodLevel, waterLevel, catBehavior, catSummary);
     if (content) {
       updateResults(content);
-      addToResultsArray(foodLevel, waterLevel, catBehavior, content);
+      addToResultsArray(foodLevel, waterLevel, catBehavior, catSummary, content);
     } else {
       console.log("Content could not be generated.");
     }
