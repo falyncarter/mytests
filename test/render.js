@@ -25,4 +25,3 @@ const renderTblBtn = (cat, index) => {
 };
 
 
-export {renderTblBtn};
