@@ -45,7 +45,7 @@ const updateResults = (content) => {
   foodResultElement.textContent = content.food;
   waterResultElement.textContent = content.water;
   treatsResultElement.textContent = content.treats;
-  behaviorResultElement.textContent = content.summary; // Display cat behavior summary
+  behaviorResultElement.textContent = content.summary; 
 };
 
 const resultsArray = [];
@@ -88,9 +88,11 @@ const onSubButtClick = (event) => {
     } else {
       console.log("Content could not be generated.");
     }
-  } else {
-    console.log("Please fill in all the required fields.");
-  }
+  } else{
+    const errorMessage = "Please fill in all the required fields.";
+    alert(errorMessage)
+    console.log(errorMessage);
+}
 };
 
 const init = () => {

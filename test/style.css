@@ -4,40 +4,36 @@ body, h1, h2, h3, p, ul, li {
     padding: 0;
 }
 
-/* Apply a pastel pink background color to the body */
 body {
-    background-color: #ffd1dc; /* Pastel Pink */
+    background-color: #ffd1dc;
     font-family: Arial, sans-serif;
-    color: #333; /* Dark Gray Text */
+    color: #333;
 }
 
-/* Center the content */
 .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ddd; /* Light Gray Border */
-    background-color: #fff; /* White Background */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Light Shadow */
+    border: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
 
-/* Style the heading */
 h1 {
     text-align: center;
     font-size: 36px;
     margin-bottom: 20px;
-    color: #ff69b4; /* Hot Pink Text */
-    text-shadow: 2px 2px 2px black; /* Black Text Outline */
+    color: #ff69b4;
+    text-shadow: 2px 2px 2px black;
 }
 
-/* Style form elements */
 label {
     display: block;
     margin-bottom: 10px;
     font-size: 18px;
-    color: #ff69b4; /* Hot Pink Text */
-    text-shadow: 1px 1px 1px black; /* Black Text Outline */
+    color: #ff69b4;
+    text-shadow: 1px 1px 1px black;
 }
 
 input[type="text"] {
@@ -48,42 +44,37 @@ input[type="text"] {
     border-radius: 5px;
 }
 
-/* Style the "Submit" button */
 button {
     display: block;
     margin: 20px auto;
     padding: 10px 20px;
-    background-color: #ff69b4; /* Hot Pink */
-    color: #fff; /* White Text */
+    background-color: #ff69b4;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); /* Light Shadow */
-    text-shadow: 1px 1px 1px black; /* Black Text Outline */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 1px black;
 }
-
 
 .result {
     margin-top: 20px;
     padding: 20px;
-    background-color: #ffd1dc; /* Pastel Pink with transparency */
+    background-color: #ffd1dc;
     border-radius: 5px;
-    border: 1px solid #ff69b4; /* Hot Pink Border */
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); /* Light Shadow */
+    border: 1px solid #ff69b4;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
 
-
-/* Style result text */
 .results-text {
     font-size: 20px;
-    color: #333; /* Dark Gray Text */
-    text-shadow: 1px 1px 1px black; /* Black Text Outline */
+    color: #333;
+    text-shadow: 1px 1px 1px black;
 }
 
-/* Style prompt text */
 .prompt-text {
     font-weight: bold;
-    color: #ff69b4; /* Hot Pink Text */
-    text-shadow: 1px 1px 1px black; /* Black Text Outline */
+    color: #ff69b4;
+    text-shadow: 1px 1px 1px black;
 }
