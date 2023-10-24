@@ -1,3 +1,6 @@
+import { renderTblBtn } from './render.js';
+
+
 const foodResults = {
   fine: "Don't give food",
   medium: "Give some food",
@@ -35,6 +38,8 @@ const displayContent = (foodLevel, waterLevel, catBehavior, catSummary) => {
     };
   }
 };
+
+renderTblBtn(cat);
 
 const updateResults = (content) => {
   const foodResultElement = document.querySelector("#foodResult .results-text");
