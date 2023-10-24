@@ -1,4 +1,4 @@
-import { renderTblBtn } from './render.js';
+
 
 
 const foodResults = {
@@ -39,7 +39,7 @@ const displayContent = (foodLevel, waterLevel, catBehavior, catSummary) => {
   }
 };
 
-renderTblBtn(cat);
+
 
 const updateResults = (content) => {
   const foodResultElement = document.querySelector("#foodResult .results-text");
