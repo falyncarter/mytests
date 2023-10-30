@@ -40,6 +40,13 @@ const displayContent = (foodLevel, waterLevel, catBehavior, catSummary) => {
 };
 
 
+
+const removeTableRow = (index) => {
+  const table = document.getElementById("catEntriesTable").querySelector("tbody");
+  table.deleteRow(index);
+};
+
+
 const renderTblBtn = (cat, index) => {
   const td = document.createElement("td");
   const btnEdit = document.createElement("button");
@@ -53,8 +60,9 @@ const renderTblBtn = (cat, index) => {
   });
 
   const btnDel = document.createElement("button");
-  btnDel.textContent = "Del";
+  btnDel.textContent = "Delete";
   btnDel.addEventListener('click', () => {
+      removeTableRow(index);
       onDelete(index);
   });
 
