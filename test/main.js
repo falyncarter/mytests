@@ -18,40 +18,6 @@ const displayContent = (foodLevel, waterLevel, catBehavior, catSummary) => {
 
 
 
-// const removeTableRow = (index) => {
-//   const table = document.getElementById("catEntriesTable").querySelector("tbody");
-//   table.deleteRow(index);
-// };
-
-
-// const renderTblBtn = (cat, index) => {
-//   const td = document.createElement("td");
-//   const btnEdit = document.createElement("button");
-//   btnEdit.textContent = "Edit";
-//   btnEdit.addEventListener('click', () => {
-//       document.getElementById("foodBowlLvlInput").value = cat.foodLevel;
-//       document.getElementById("waterBowlLvlInput").value = cat.waterLevel;
-//       document.getElementById("catBehaviorInput").value = cat.catBehavior;
-//       document.getElementById("catSummaryInput").value = cat.catSummary;
-//       onUpdate(index);
-//   });
-
-//   const btnDel = document.createElement("button");
-//   btnDel.textContent = "Delete";
-//   btnDel.addEventListener('click', () => {
-//       removeTableRow(index);
-//       onDelete(index);
-//   });
-
-//   td.appendChild(btnEdit);
-//   td.appendChild(btnDel);
-
-//   return td;
-// };
-
-
-
-
 
 const updateResults = (content) => {
   const foodResultElement = document.querySelector("#foodResult .results-text");
