@@ -87,6 +87,7 @@ const displayResultsInConsole = () => {
 
 const onSubButtClick = (event) => {
   event.preventDefault();
+
   const foodBowlLvlInput = document.getElementById("foodBowlLvlInput");
   const waterBowlLvlInput = document.getElementById("waterBowlLvlInput");
   const catBehaviorInput = document.getElementById("catBehaviorInput");
@@ -97,6 +98,8 @@ const onSubButtClick = (event) => {
   const catBehavior = getInputValue(catBehaviorInput);
   const catSummary = catSummaryInput.value;
 
+  const errorMessageElement = document.getElementById("errorMessage");
+
   if (foodLevel !== null && waterLevel !== null && catBehavior !== null && catSummary !== "") {
     const content = displayContent(foodLevel, waterLevel, catBehavior, catSummary);
     if (content) {
@@ -105,12 +108,13 @@ const onSubButtClick = (event) => {
     } else {
       console.log("Content could not be generated.");
     }
-  } else{
-    const errorMessage = "Please fill in all the required fields.";
-    alert(errorMessage)
-    console.log(errorMessage);
-}
+  } else {
+    errorMessageElement.style.display = "block"; 
+    errorMessageElement.textContent = "Please fill in all the required fields.";
+  }
 };
+
+
 
 const init = () => {
   const submitBtn = document.getElementById("submitBtn");

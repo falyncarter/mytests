@@ -1,4 +1,4 @@
-/* Reset default styles */
+
 body, h1, h2, h3, p, ul, li {
     margin: 0;
     padding: 0;
@@ -77,4 +77,12 @@ button {
     font-weight: bold;
     color: #ff69b4;
     text-shadow: 1px 1px 1px black;
+}
+
+.error-message {
+    color: red;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    display: none; 
 }

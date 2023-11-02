@@ -34,10 +34,13 @@
             </select>
 
             <label for="catSummaryInput">Summarize the behavior of the cats:</label>
-                <input type="text" id="catSummaryInput">
+            <input type="text" id="catSummaryInput">
 
             <button id="submitBtn">Submit</button>
         </form>
+
+        <div id="errorMessage" class="error-message"></div> 
+
         <table id="catEntriesTable">
             <thead>
                 <tr>
@@ -57,7 +60,7 @@
             <span class="prompt-text">Food Bowl:</span> <span class="results-text"></span>
         </div>
 
-        <div class="result" id="waterResult">
+        <div class="result" id ="waterResult">
             <span class= "prompt-text">Water Bowl:</span> <span class="results-text"></span>
         </div>
 
