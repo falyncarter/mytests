@@ -51,6 +51,8 @@ const displayResultsInConsole = () => {
   });
 };
 
+// Add console.log statements to debug your code
+
 const onSubButtClick = (event) => {
   event.preventDefault();
 
@@ -59,10 +61,20 @@ const onSubButtClick = (event) => {
   const catBehaviorInput = document.getElementById("catBehaviorInput");
   const catSummaryInput = document.getElementById("catSummaryInput");
 
+  console.log("foodBowlLvlInput:", foodBowlLvlInput);
+  console.log("waterBowlLvlInput:", waterBowlLvlInput);
+  console.log("catBehaviorInput:", catBehaviorInput);
+  console.log("catSummaryInput:", catSummaryInput);
+
   const foodLevel = getInputValue(foodBowlLvlInput);
   const waterLevel = getInputValue(waterBowlLvlInput);
   const catBehavior = getInputValue(catBehaviorInput);
   const catSummary = catSummaryInput.value;
+
+  console.log("foodLevel:", foodLevel);
+  console.log("waterLevel:", waterLevel);
+  console.log("catBehavior:", catBehavior);
+  console.log("catSummary:", catSummary);
 
   const errorMessageElement = document.getElementById("errorMessage");
 
@@ -75,10 +87,11 @@ const onSubButtClick = (event) => {
       console.log("Content could not be generated.");
     }
   } else {
-    errorMessageElement.style.display = "block"; 
+    errorMessageElement.style.display = "block";
     errorMessageElement.textContent = "Please fill in all the required fields.";
   }
 };
+
 
 
 
