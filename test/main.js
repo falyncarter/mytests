@@ -42,6 +42,8 @@ const addToResultsArray = (foodLevel, waterLevel, catBehavior, catSummary, conte
     content,
   });
 
+  localStorage.setItem("resultsArray", JSON.stringify(resultsArray))
+
   const resultsTable = document.getElementById('resultsTable');
   if (resultsTable) {
     // Add rows to the table as before.
@@ -91,10 +93,11 @@ const onSubButtClick = (event) => {
 const handleDelete = (row, index) => {
   row.remove();
   resultsArray.splice(index, 1);
+  localStorage.setItem("resultsArray", JSON.stringify(resultsArray));
   displayResultsInConsole();
 };
 
-const handleEditRow = (index) => {
+const handleEdit = (index) => {
   const rowToEdit = resultsArray[index];
   populateFormWithRowData(rowToEdit);
   resultsArray.splice(index, 1);
@@ -110,11 +113,11 @@ const init = () => {
   const deleteButtons = document.querySelectorAll(".delete-button");
 
   editButtons.forEach((editButton, index) => {
-    editButton.addEventListener("click", () => handleEditRow(index));
+    editButton.addEventListener("click", () => handleEdit(index));
   });
 
   deleteButtons.forEach((deleteButton, index) => {
-    deleteButton.addEventListener("click", () => handleDeleteRow(index));
+    deleteButton.addEventListener("click", () => handleDelete(index));
   });
 };
 
