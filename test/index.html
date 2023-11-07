@@ -1,62 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Cat Care App</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Care</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Cat Care App</h1>
-    
-    <form id="catCareForm">
-      <label for="foodBowlLvlInput" class="prompt-text">Food Bowl Level:</label>
-      <select id="foodBowlLvlInput">
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </select>
-      
-      <label for="waterBowlLvlInput" class="prompt-text">Water Bowl Level:</label>
-      <select id="waterBowlLvlInput">
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </select>
-      
-      <label for="catBehaviorInput" class="prompt-text">Cat Behavior:</label>
-      <select id="catBehaviorInput">
-        <option value="friendly">Friendly</option>
-        <option value="playful">Playful</option>
-        <option value="moody">Moody</option>
-      </select>
-      
-      <label for="catSummaryInput" class="prompt-text">Cat Summary:</label>
-      <textarea id="catSummaryInput" rows="4" cols="50"></textarea>
-      
-      <button type="button" id="submitBtn">Submit</button>
-      <p id="errorMessage" class="error-message"></p>
-    </form>
-    
-    <button type="button" id="editButton">Edit</button>
-    <button type="button" id="deleteButton">Delete</button>
+    <div class="container">
+        <h1>Cat Care</h1>
 
-    <div id="resultsTable" class="result">
-      <table>
-        <thead>
-          <tr>
-            <th>Food Level</th>
-            <th>Water Level</th>
-            <th>Cat Behavior</th>
-            <th>Summary</th>
-          </tr>
-        </thead>
-        <tbody id="resultsTableBody">
-          
-        </tbody>
-      </table>
+        <form id="catCareForm">
+            <label for="foodBowlLvlInput">Food Bowl Level:</label>
+            <select id="foodBowlLvlInput">
+                <option value="fine">Fine</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+        
+            <label for="waterBowlLvlInput">Water Bowl Level:</label>
+            <select id="waterBowlLvlInput">
+                <option value="fine">Fine</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+        
+            <label for="catBehaviorInput">Cat Behavior:</label>
+            <select id="catBehaviorInput">
+                <option value="great">Great</option>
+                <option value="good">Good</option>
+                <option value="meh">Meh</option>
+                <option value="bad">Bad</option>
+            </select>
+
+            <label for="catSummaryInput">Summarize the behavior of the cats:</label>
+            <input type="text" id="catSummaryInput">
+
+            <button type="submit" id="submitBtn">Submit</button>
+        </form>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Food Bowl</th>
+                        <th>Water Bowl</th>
+                        <th>Treats</th>
+                        <th>Cat Behavior Summary</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsTable">
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <div id="errorMessage" class="error-message"></div>
     </div>
-  </div>
-  <script defer src="main.js"></script>
+
+    <script type="module" defer src="main.js"></script>
 </body>
 </html>
-
