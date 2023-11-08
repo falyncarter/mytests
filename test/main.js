@@ -1,4 +1,5 @@
 import { foodResults, waterResults, treatsResults } from "./global.js";
+import { handleDelete, handleEdit } from "./buttons.js";
 
 const getInputValue = (inputElement) => inputElement ? inputElement.value : null;
 
@@ -90,22 +91,7 @@ const onSubButtClick = (event) => {
 };
 
 
-const handleDelete = (row, index) => {
-  row.remove();
-  resultsArray.splice(index, 1);
-  localStorage.setItem("resultsArray", JSON.stringify(resultsArray));
-  displayResultsInConsole();
-};
-
-const handleEdit = (index) => {
-  const rowToEdit = resultsArray[index];
-  populateFormWithRowData(rowToEdit);
-  resultsArray.splice(index, 1);
-  displayResultsInConsole();
-};
-
-
-const init = () => {
+const start = () => {
   const submitBtn = document.getElementById("submitBtn");
   submitBtn.addEventListener("click", onSubButtClick);
 
@@ -121,4 +107,4 @@ const init = () => {
   });
 };
 
-document.addEventListener("DOMContentLoaded", init);
+start();
