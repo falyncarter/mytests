@@ -74,6 +74,7 @@ const onSubButtClick = (event) => {
     if (content) {
       updateResults(content);
       addToResultsArray(foodLevel, waterLevel, catBehavior, catSummary, content);
+      displayResultsInConsole();
 
       foodBowlLvlInput.value = 'fine';
       waterBowlLvlInput.value = 'fine';
