@@ -45,6 +45,8 @@ const addToResultsArray = (foodLevel, waterLevel, catBehavior, catSummary, conte
 
   localStorage.setItem("resultsArray", JSON.stringify(resultsArray));
 
+  const resultsTable = document.getElementById('resultsTable'); 
+
   if (resultsTable) {
     const tbody = resultsTable.querySelector('tbody');
     if (tbody) {
