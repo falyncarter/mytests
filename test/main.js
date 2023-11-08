@@ -43,13 +43,24 @@ const addToResultsArray = (foodLevel, waterLevel, catBehavior, catSummary, conte
     content,
   });
 
-  localStorage.setItem("resultsArray", JSON.stringify(resultsArray))
+  localStorage.setItem("resultsArray", JSON.stringify(resultsArray));
 
-  const resultsTable = document.getElementById('resultsTable');
   if (resultsTable) {
-    // Add rows to the table as before.
+    const tbody = resultsTable.querySelector('tbody');
+    if (tbody) {
+      const newRow = document.createElement('tr');
+
+      ['Food Data', 'Water Data', 'Treats Data', 'Summary Data'].forEach(data => {
+        const cell = document.createElement('td');
+        cell.textContent = data;
+        newRow.appendChild(cell);
+      });
+      tbody.appendChild(newRow);
+    }
   }
 };
+
+  
 
 const displayResultsInConsole = () => {
   resultsArray.forEach((result, index) => {
