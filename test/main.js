@@ -18,23 +18,59 @@ const displayContent = (foodLevel, waterLevel, catBehavior, catSummary) => {
   }
 };
 
-const updateResults = (content) => {
-  const foodResultElement = document.querySelector("#foodResult .results-text");
-  const waterResultElement = document.querySelector("#waterResult .results-text");
-  const treatsResultElement = document.querySelector("#treatsResult .results-text");
-  const catSummaryResultElement = document.querySelector("#catSummaryResult .results-text");
+const updateResultsInTable = (content) => {
+  const resultElements = {
+    food: document.querySelector("#foodResult .results-text"),
+    water: document.querySelector("#waterResult .results-text"),
+    treats: document.querySelector("#treatsResult .results-text"),
+    catSummary: document.querySelector("#catSummaryResult .results-text"),
+  };
 
-  if (foodResultElement && waterResultElement && treatsResultElement && catSummaryResultElement) {
-    foodResultElement.textContent = content.food;
-    waterResultElement.textContent = content.water;
-    treatsResultElement.textContent = content.treats;
-    catSummaryResultElement.textContent = content.catSummary;
-  }
+  Object.keys(resultElements).forEach(key => {
+    if (resultElements[key]) {
+      resultElements[key].textContent = content[key];
+    }
+  });
+
+  console.log("Content updated in the table:", content);
 };
 
-const resultsArray = [];
-
 const addToResultsArray = (foodLevel, waterLevel, catBehavior, catSummary, content) => {
+  const resultsTableElement = document.getElementById('resultsTable');
+  const newRow = document.createElement('tr');
+
+  const foodCell = document.createElement('td');
+  foodCell.textContent = content.food;
+
+  const waterCell = document.createElement('td');
+  waterCell.textContent = content.water;
+
+  const treatsCell = document.createElement('td');
+  treatsCell.textContent = content.treats;
+
+  const catSummaryCell = document.createElement('td');
+  catSummaryCell.textContent = content.catSummary;
+
+  newRow.appendChild(foodCell);
+  newRow.appendChild(waterCell);
+  newRow.appendChild(treatsCell);
+  newRow.appendChild(catSummaryCell);
+
+  const actionsCell = document.createElement('td');
+  
+  const editButton = document.createElement('button');
+  editButton.textContent = 'Edit';
+  editButton.addEventListener('click', () => handleEdit(newRow));
+
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Delete';
+  deleteButton.addEventListener('click', () => handleDelete(newRow));
+
+  actionsCell.appendChild(editButton);
+  actionsCell.appendChild(deleteButton);
+
+  newRow.appendChild(actionsCell);
+
   resultsArray.push({
     foodLevel,
     waterLevel,
@@ -45,24 +81,9 @@ const addToResultsArray = (foodLevel, waterLevel, catBehavior, catSummary, conte
 
   localStorage.setItem("resultsArray", JSON.stringify(resultsArray));
 
-  const resultsTable = document.getElementById('resultsTable'); 
-
-  if (resultsTable) {
-    const tbody = resultsTable.querySelector('tbody');
-    if (tbody) {
-      const newRow = document.createElement('tr');
-
-      ['Food Data', 'Water Data', 'Treats Data', 'Summary Data'].forEach(data => {
-        const cell = document.createElement('td');
-        cell.textContent = data;
-        newRow.appendChild(cell);
-      });
-      tbody.appendChild(newRow);
-    }
-  }
+  resultsTableElement.appendChild(newRow);
 };
 
-  
 
 const displayResultsInConsole = () => {
   resultsArray.forEach((result, index) => {
@@ -70,8 +91,27 @@ const displayResultsInConsole = () => {
   });
 };
 
+const clearInputFields = () => {
+  const inputFields = [
+    document.getElementById("foodBowlLvlInput"),
+    document.getElementById("waterBowlLvlInput"),
+    document.getElementById("catBehaviorInput"),
+    document.getElementById("catSummaryInput"),
+  ];
+
+  inputFields.forEach(input => input.value = 'fine');
+};
+
+const showError = (message) => {
+  const errorMessageElement = document.getElementById("errorMessage");
+  errorMessageElement.style.display = "block";
+  errorMessageElement.textContent = message;
+};
+
 const onSubButtClick = (event) => {
+  console.log("Submit button clicked");
   event.preventDefault();
+
   const foodBowlLvlInput = document.getElementById("foodBowlLvlInput");
   const waterBowlLvlInput = document.getElementById("waterBowlLvlInput");
   const catBehaviorInput = document.getElementById("catBehaviorInput");
@@ -82,30 +122,33 @@ const onSubButtClick = (event) => {
   const catBehavior = getInputValue(catBehaviorInput);
   const catSummary = catSummaryInput.value;
 
-  if (foodLevel !== null && waterLevel !== null && catBehavior !== null) {
+  if (foodLevel && waterLevel && catBehavior) {
     const content = displayContent(foodLevel, waterLevel, catBehavior, catSummary);
+    
     if (content) {
-      updateResults(content);
       addToResultsArray(foodLevel, waterLevel, catBehavior, catSummary, content);
+      console.log("Content before updateResults:", content);
+      updateResultsInTable(content);
       displayResultsInConsole();
+      console.log("Content after updateResults:", content);
 
-      foodBowlLvlInput.value = 'fine';
-      waterBowlLvlInput.value = 'fine';
-      catBehaviorInput.value = 'great';
+      
+      foodBowlLvlInput.value = '';
+      waterBowlLvlInput.value = '';
+      catBehaviorInput.value = '';
       catSummaryInput.value = '';
 
-      const errorMessageElement = document.getElementById("errorMessage");
-      errorMessageElement.style.display = 'none';
+      showError('');
     }
   } else {
-    const errorMessageElement = document.getElementById("errorMessage");
-    errorMessageElement.style.display = "block";
-    errorMessageElement.textContent = "Please fill in all the required fields.";
+    showError("Please fill in all the required fields.");
   }
 };
 
 
 const start = () => {
+  console.log("start function called");
+
   const submitBtn = document.getElementById("submitBtn");
   submitBtn.addEventListener("click", onSubButtClick);
 
@@ -121,4 +164,5 @@ const start = () => {
   });
 };
 
+const resultsArray = [];
 start();
