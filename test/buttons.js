@@ -1,3 +1,5 @@
+import { resultsArray } from "./main.js";
+
 const handleDelete = (row, index) => {
   row.remove();
   resultsArray.splice(index, 1);

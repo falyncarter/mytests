@@ -164,5 +164,11 @@ const start = () => {
   });
 };
 
+
+
 const resultsArray = [];
 start();
+
+
+
+export { resultsArray };
