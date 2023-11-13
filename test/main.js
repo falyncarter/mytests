@@ -1,22 +1,7 @@
-import { foodResults, waterResults, treatsResults } from "./global.js";
+import { CatCareData } from "./catclass.js";
 import { handleDelete, handleEdit } from "./buttons.js";
 
 const getInputValue = (inputElement) => inputElement ? inputElement.value : null;
-
-const displayContent = (foodLevel, waterLevel, catBehavior, catSummary) => {
-  const foodContent = foodResults[foodLevel];
-  const waterContent = waterResults[waterLevel];
-  const treatsContent = treatsResults[catBehavior];
-
-  if (foodContent && waterContent && treatsContent) {
-    return {
-      food: foodContent,
-      water: waterContent,
-      treats: treatsContent,
-      catSummary: catSummary,
-    };
-  }
-};
 
 const updateResultsInTable = (content) => {
   const resultElements = {
@@ -84,7 +69,6 @@ const addToResultsArray = (foodLevel, waterLevel, catBehavior, catSummary, conte
   resultsTableElement.appendChild(newRow);
 };
 
-
 const displayResultsInConsole = () => {
   resultsArray.forEach((result, index) => {
     console.log(`Result ${index + 1}:`, result);
@@ -123,8 +107,15 @@ const onSubButtClick = (event) => {
   const catSummary = catSummaryInput.value;
 
   if (foodLevel && waterLevel && catBehavior) {
-    const content = displayContent(foodLevel, waterLevel, catBehavior, catSummary);
+    const catCareData = new CatCareData(foodLevel, waterLevel, catBehavior);
     
+    const content = {
+      food: foodResults[foodLevel],
+      water: waterResults[waterLevel],
+      treats: treatsResults[catBehavior],
+      catSummary: catSummary,
+    };
+
     if (content) {
       addToResultsArray(foodLevel, waterLevel, catBehavior, catSummary, content);
       console.log("Content before updateResults:", content);
@@ -132,7 +123,6 @@ const onSubButtClick = (event) => {
       displayResultsInConsole();
       console.log("Content after updateResults:", content);
 
-      
       foodBowlLvlInput.value = '';
       waterBowlLvlInput.value = '';
       catBehaviorInput.value = '';
@@ -145,7 +135,6 @@ const onSubButtClick = (event) => {
   }
 };
 
-
 const start = () => {
   console.log("start function called");
 
@@ -156,19 +145,15 @@ const start = () => {
   const deleteButtons = document.querySelectorAll(".delete-button");
 
   editButtons.forEach((editButton, index) => {
-    editButton.addEventListener("click", () => handleEdit(index));
+    editButton.addEventListener('click', () => handleEdit(index));
   });
 
   deleteButtons.forEach((deleteButton, index) => {
-    deleteButton.addEventListener("click", () => handleDelete(index));
+    deleteButton.addEventListener('click', () => handleDelete(index));
   });
 };
 
-
-
 const resultsArray = [];
 start();
-
-
 
 export { resultsArray };
