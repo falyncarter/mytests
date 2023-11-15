@@ -1,7 +1,6 @@
 import { resultsArray } from "./main.js";
 
-const handleDelete = (row, index) => {
-  row.remove();
+const handleDelete = (index) => {
   resultsArray.splice(index, 1);
   localStorage.setItem("resultsArray", JSON.stringify(resultsArray));
   displayResultsInConsole();
@@ -15,3 +14,4 @@ const handleEdit = (index) => {
 };
 
 export { handleDelete, handleEdit };
+
