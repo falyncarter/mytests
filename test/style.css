@@ -27,7 +27,7 @@ h1 {
     text-shadow: 2px 2px 2px black;
 }
 
-label {
+.label {
     display: block;
     margin-bottom: 10px;
     font-size: 18px;
@@ -103,4 +103,24 @@ table td {
     text-align: center;
     margin-top: 10px;
     display: none;
+}
+
+.image-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.left-image,
+.right-image {
+    width: 45%;
+    border-radius: 10px;
+}
+
+.left-image {
+    order: 1;
+}
+
+.right-image {
+    order: 2;
 }
