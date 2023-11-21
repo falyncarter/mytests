@@ -12,9 +12,9 @@ class CatCareData {
 
   calculateFoodPoints() {
     const foodPoints = {
-      fine: 0,
-      medium: 1,
-      low: 2,
+      fine: "Don't give food",
+      medium: "Give a little food",
+      low: "Give a lot of food",
     };
 
     this.foodPts = foodPoints[this.foodLevel];
@@ -22,9 +22,9 @@ class CatCareData {
 
   calculateWaterPoints() {
     const waterPoints = {
-      fine: 0,
-      medium: 1,
-      low: 2,
+      fine: "Don't give water",
+      medium: "Give a little water",
+      low: "Give a lot of water",
     };
 
     this.waterPts = waterPoints[this.waterLevel];
